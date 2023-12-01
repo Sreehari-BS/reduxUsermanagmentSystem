@@ -1,0 +1,50 @@
+import jwt from "jsonwebtoken";
+import asyncHandler from "express-async-handler";
+import User from "../models/userModel.js";
+import Admin from "../models/adminModel.js";
+
+const protect = asyncHandler(async (req, res, next) => {
+  let token;
+
+  token = req.cookies.jwt;
+
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      req.user = await User.findById(decoded.userId).select("-password");
+
+      next();
+    } catch (error) {
+      res.status(401);
+      throw new Error("Not Authorized, Invalid Token");
+    }
+  } else {
+    res.status(401);
+    throw new Error("Not Authorized, No Token");
+  }
+});
+
+const protectAdmin = asyncHandler(async (req, res, next) => {
+  let adminToken;
+
+  adminToken = req.cookies.adminJWT;
+
+  if (adminToken) {
+    try {
+      const decoded = jwt.verify(adminToken, process.env.ADMIN_JWT_SECRET);
+
+      req.admin = await Admin.findById(decoded.adminId).select("-password");
+
+      next();
+    } catch (error) {
+      res.status(401);
+      throw new Error("Not Authorized, Invalid Token");
+    }
+  } else {
+    res.status(401);
+    throw new Error("Not Authorized, No Token");
+  }
+});
+
+export { protect, protectAdmin };

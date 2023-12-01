@@ -1,0 +1,77 @@
+.homeContainer {
+  padding: 10px;
+  max-width: fit-content;
+  margin: 20px auto;
+}
+
+.adminSignOutBtn{
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.addContainer {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addContainer form {
+  width: 420px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.addContainer form label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.addContainer form input {
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.addContainer form .close-btn {
+  margin-left: auto;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tableContainer {
+    margin-top: 40px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.tableContainer table thead tr{
+    background-color: rgb(231, 246, 231);
+}
+
+.tableContainer table thead tr th,
+.tableContainer table tbody tr td {
+    min-width: 200px;
+    text-align: center;
+    padding: 7px;
+}
+
+.tableContainer table tbody tr td {
+    border: 2px solid rgb(231, 246, 231);
+}
